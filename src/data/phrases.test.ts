@@ -13,10 +13,10 @@ describe("getPhraseById", () => {
 });
 
 describe("getPhrasesByCategory", () => {
-  it("各カテゴリーちょうど5件を返す", () => {
+  it("各カテゴリーちょうど10件を返す", () => {
     for (const category of ["question", "response", "opinion", "feeling"] as const) {
       const result = getPhrasesByCategory(category);
-      expect(result).toHaveLength(5);
+      expect(result).toHaveLength(10);
       expect(result.every((p) => p.category === category)).toBe(true);
     }
   });

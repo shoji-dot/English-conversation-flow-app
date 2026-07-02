@@ -4,6 +4,7 @@ import { categories, getCategory } from "@/data/categories";
 import { getPhrasesByCategory } from "@/data/phrases";
 import { PhraseList } from "@/components/phrase/PhraseList";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { CategoryTabs } from "@/components/layout/CategoryTabs";
 import type { CategoryId } from "@/types/phrase";
 
 export function generateStaticParams() {
@@ -29,6 +30,7 @@ export default function CategoryPage({ params }: { params: { id: string } }) {
   return (
     <main className="min-h-dvh px-5 pb-[calc(env(safe-area-inset-bottom)+24px)] pt-[calc(env(safe-area-inset-top)+16px)]">
       <PageHeader title={category.label} subtitle={category.labelJa} />
+      <CategoryTabs active={category.id} />
 
       <PhraseList phrases={phrases} />
     </main>
