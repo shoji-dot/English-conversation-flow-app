@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
+import { IosActiveFix } from "@/components/pwa/IosActiveFix";
 
 export const metadata: Metadata = {
   title: "Talk Flow",
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         {children}
         <ServiceWorkerRegister />
+        <IosActiveFix />
       </body>
     </html>
   );
