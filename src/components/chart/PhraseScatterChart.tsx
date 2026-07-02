@@ -46,8 +46,8 @@ export function PhraseScatterChart({ phrases, onSelect }: PhraseScatterChartProp
     <div className="w-full">
       <svg viewBox="0 0 100 100" className="h-auto w-full">
         {/* 軸線 */}
-        <line x1={AXIS_MIN} y1={AXIS_MAX} x2={AXIS_MAX} y2={AXIS_MAX} stroke="#D2D2D7" strokeWidth={0.5} />
-        <line x1={AXIS_MIN} y1={AXIS_MIN} x2={AXIS_MIN} y2={AXIS_MAX} stroke="#D2D2D7" strokeWidth={0.5} />
+        <line x1={AXIS_MIN} y1={AXIS_MAX} x2={AXIS_MAX} y2={AXIS_MAX} stroke="var(--color-divider)" strokeWidth={0.5} />
+        <line x1={AXIS_MIN} y1={AXIS_MIN} x2={AXIS_MIN} y2={AXIS_MAX} stroke="var(--color-divider)" strokeWidth={0.5} />
 
         {points.map(({ phrase, x, y }) => (
           <g

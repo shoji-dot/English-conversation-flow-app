@@ -42,7 +42,7 @@ export function ConversationFlowMap() {
         <path
           d={pathD()}
           fill="none"
-          stroke="#D2D2D7"
+          stroke="var(--color-divider)"
           strokeWidth={0.6}
           strokeDasharray="2 2.5"
         />

@@ -26,7 +26,7 @@ export function PhraseDetailSheet({
         <div className="flex flex-col gap-5">
           <div className="flex items-start justify-between gap-3 pr-10">
             <div>
-              <p className="text-xl font-semibold text-ink">{phrase.en}</p>
+              <p lang="en" className="text-xl font-semibold text-ink">{phrase.en}</p>
               <p className="mt-1 text-sm text-ink-muted">{phrase.meaning}</p>
             </div>
             <button
@@ -44,7 +44,7 @@ export function PhraseDetailSheet({
 
           <div className="rounded-card bg-surface-muted p-4">
             <p className="text-xs font-medium uppercase tracking-wide text-ink-muted">Example</p>
-            <p className="mt-1 text-sm text-ink">{phrase.example}</p>
+            <p lang="en" className="mt-1 text-sm text-ink">{phrase.example}</p>
           </div>
 
           <div className="flex flex-col gap-3">

@@ -32,6 +32,7 @@ export default function ChartPage() {
             key={v}
             type="button"
             onClick={() => setView(v)}
+            aria-pressed={view === v}
             className={cn(
               "rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
               view === v ? "bg-accent text-white" : "bg-surface-muted text-ink-muted"
@@ -52,6 +53,7 @@ export default function ChartPage() {
                 key={key}
                 type="button"
                 onClick={() => setSortKey(key)}
+                aria-pressed={sortKey === key}
                 className={cn(
                   "rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
                   sortKey === key ? "bg-accent text-white" : "bg-surface-muted text-ink-muted"

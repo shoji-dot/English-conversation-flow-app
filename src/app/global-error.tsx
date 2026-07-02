@@ -21,12 +21,12 @@ export default function GlobalError({
     <html lang="ja">
       <body className="font-sans antialiased">
         <main className="flex min-h-dvh flex-col items-center justify-center gap-4 px-6 text-center">
-          <p className="text-base font-semibold text-[#1D1D1F]">アプリを再読み込みしてください</p>
-          <p className="text-sm text-[#6E6E73]">問題が続く場合は少し時間をおいてお試しください。</p>
+          <p className="text-base font-semibold text-ink">アプリを再読み込みしてください</p>
+          <p className="text-sm text-ink-muted">問題が続く場合は少し時間をおいてお試しください。</p>
           <button
             type="button"
             onClick={reset}
-            className="mt-2 h-11 rounded-full bg-[#F5F5F7] px-4 text-base font-medium text-[#1D1D1F]"
+            className="mt-2 h-11 rounded-full bg-surface-muted px-4 text-base font-medium text-ink"
           >
             再読み込み
           </button>

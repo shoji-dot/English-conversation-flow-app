@@ -19,7 +19,7 @@ export function PhraseCard({ phrase, onSelect }: PhraseCardProps) {
       whileTap={{ scale: 0.97 }}
       className="w-full rounded-card bg-surface p-4 text-left shadow-card"
     >
-      <p className="text-base font-medium text-ink">{phrase.en}</p>
+      <p lang="en" className="text-base font-medium text-ink">{phrase.en}</p>
       <p className="mt-1 text-sm text-ink-muted">{phrase.meaning}</p>
       {phrase.tags.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-1.5">

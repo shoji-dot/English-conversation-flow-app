@@ -53,6 +53,7 @@ export default function SearchPage() {
               key={industry.id}
               type="button"
               onClick={() => toggleTag(industry.id)}
+              aria-pressed={active}
               className={cn(
                 "rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
                 active ? "bg-accent text-white" : "bg-surface-muted text-ink-muted"

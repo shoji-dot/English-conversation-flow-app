@@ -5,17 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Apple風ニュートラルパレット + アクセント1色
+        // 値はglobals.cssのCSS変数を参照。ライト/ダークの切り替えは変数側(prefers-color-scheme)で行うため
+        // コンポーネント側にdark:バリアントを追加する必要がない。
         accent: {
-          DEFAULT: "#0A84FF", // iOS system blue
+          DEFAULT: "var(--color-accent)",
         },
         surface: {
-          DEFAULT: "#FFFFFF",
-          muted: "#F5F5F7",
+          DEFAULT: "var(--color-surface)",
+          muted: "var(--color-surface-muted)",
         },
         ink: {
-          DEFAULT: "#1D1D1F",
-          muted: "#6E6E73",
+          DEFAULT: "var(--color-ink)",
+          muted: "var(--color-ink-muted)",
         },
       },
       borderRadius: {
