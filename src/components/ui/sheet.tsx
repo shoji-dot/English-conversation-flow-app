@@ -1,8 +1,12 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useDragControls } from "framer-motion";
 import { X } from "lucide-react";
+
+/** これ以上下にドラッグしたら閉じる、とみなすしきい値(px)。フリック(速度)が速ければ距離が短くても閉じる。 */
+const DISMISS_OFFSET = 120;
+const DISMISS_VELOCITY = 500;
 
 interface SheetProps {
   open: boolean;
@@ -16,6 +20,8 @@ interface SheetProps {
  * 見た目のアニメーションはFramer Motionで制御する。
  */
 export function Sheet({ open, onOpenChange, children }: SheetProps) {
+  const dragControls = useDragControls();
+
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <AnimatePresence>
@@ -37,8 +43,22 @@ export function Sheet({ open, onOpenChange, children }: SheetProps) {
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 32, stiffness: 320 }}
+                drag="y"
+                dragControls={dragControls}
+                dragListener={false}
+                dragConstraints={{ top: 0, bottom: 0 }}
+                dragElastic={{ top: 0, bottom: 1 }}
+                onDragEnd={(_, info) => {
+                  if (info.offset.y > DISMISS_OFFSET || info.velocity.y > DISMISS_VELOCITY) {
+                    onOpenChange(false);
+                  }
+                }}
               >
-                <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-surface-muted" />
+                <div
+                  onPointerDown={(e) => dragControls.start(e)}
+                  className="mx-auto mb-4 h-1.5 w-10 touch-none rounded-full bg-surface-muted"
+                  style={{ touchAction: "none" }}
+                />
                 <Dialog.Close asChild>
                   <button
                     className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-surface-muted text-ink-muted"
