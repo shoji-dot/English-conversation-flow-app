@@ -12,7 +12,7 @@ interface PhraseListProps {
 
 /** フレーズ一覧と詳細シートの開閉・お気に入り・履歴記録をまとめて管理する。 */
 export function PhraseList({ phrases, emptyMessage }: PhraseListProps) {
-  const { selected, select, clear, isFavorite, toggle } = usePhraseSelection();
+  const { selected, select, onOpenChange, isFavorite, toggle } = usePhraseSelection();
 
   if (phrases.length === 0) {
     return (
@@ -31,9 +31,7 @@ export function PhraseList({ phrases, emptyMessage }: PhraseListProps) {
       </div>
       <PhraseDetailSheet
         phrase={selected}
-        onOpenChange={(open) => {
-          if (!open) clear();
-        }}
+        onOpenChange={onOpenChange}
         isFavorite={selected ? isFavorite(selected.id) : false}
         onToggleFavorite={toggle}
       />

@@ -15,7 +15,7 @@ type SortKey = "frequency" | "difficulty";
 export default function ChartPage() {
   const [view, setView] = useState<View>("chart");
   const [sortKey, setSortKey] = useState<SortKey>("frequency");
-  const { selected, select, clear, isFavorite, toggle } = usePhraseSelection();
+  const { selected, select, onOpenChange, isFavorite, toggle } = usePhraseSelection();
 
   const sortedPhrases = useMemo(
     () => [...phrases].sort((a, b) => b[sortKey] - a[sortKey]),
@@ -73,9 +73,7 @@ export default function ChartPage() {
 
       <PhraseDetailSheet
         phrase={selected}
-        onOpenChange={(open) => {
-          if (!open) clear();
-        }}
+        onOpenChange={onOpenChange}
         isFavorite={selected ? isFavorite(selected.id) : false}
         onToggleFavorite={toggle}
       />

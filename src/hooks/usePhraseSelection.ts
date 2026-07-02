@@ -24,5 +24,10 @@ export function usePhraseSelection() {
     setSelected(null);
   }
 
-  return { selected, select, clear, isFavorite, toggle };
+  /** PhraseDetailSheetのonOpenChangeにそのまま渡せる形。閉じられた時だけselectedをクリアする。 */
+  function onOpenChange(open: boolean) {
+    if (!open) clear();
+  }
+
+  return { selected, select, clear, onOpenChange, isFavorite, toggle };
 }

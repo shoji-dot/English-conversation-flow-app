@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { categories, getCategory } from "@/data/categories";
 import { getPhrasesByCategory } from "@/data/phrases";
@@ -11,6 +12,12 @@ export function generateStaticParams() {
 
 function isCategoryId(value: string): value is CategoryId {
   return categories.some((c) => c.id === value);
+}
+
+export function generateMetadata({ params }: { params: { id: string } }): Metadata {
+  if (!isCategoryId(params.id)) return {};
+  const category = getCategory(params.id);
+  return { title: `${category.label} | Talk Flow` };
 }
 
 export default function CategoryPage({ params }: { params: { id: string } }) {
