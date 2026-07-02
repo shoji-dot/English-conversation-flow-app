@@ -53,7 +53,14 @@ export function PhraseScatterChart({ phrases, onSelect }: PhraseScatterChartProp
           <g
             key={phrase.id}
             onClick={() => onSelect(phrase)}
-            className="cursor-pointer"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onSelect(phrase);
+              }
+            }}
+            tabIndex={0}
+            className="cursor-pointer focus:outline-none focus-visible:opacity-70"
             role="button"
             aria-label={phrase.en}
           >

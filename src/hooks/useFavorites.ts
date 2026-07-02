@@ -22,7 +22,11 @@ export function useFavorites() {
 
   const persist = useCallback((next: string[]) => {
     setFavorites(next);
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      // 容量超過・プライベートモード等での書き込み失敗は無視し、表示状態(state)のみ更新を継続する
+    }
   }, []);
 
   const isFavorite = useCallback((id: string) => favorites.includes(id), [favorites]);

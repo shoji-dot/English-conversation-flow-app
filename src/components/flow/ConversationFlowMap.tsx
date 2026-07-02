@@ -7,8 +7,11 @@ import { FlowNode } from "./FlowNode";
  * 5点を五角形状に配置し、中心角度 -90°起点で72°ずつ時計回りに並べる。
  * 会話ループ Question→Response→Opinion→Feeling→NextQuestion→(戻る)Question を
  * そのまま図形の並びとして表現する。
+ *
+ * RADIUSはノード実寸(FlowNodeのw-16=64px)を考慮し、iPhone SE等の狭い画面でも
+ * ノードが画面端からはみ出さないよう安全マージンを確保した値。
  */
-const RADIUS = 40;
+const RADIUS = 35;
 function pointAt(index: number) {
   const angle = ((-90 + 72 * index) * Math.PI) / 180;
   return { x: 50 + RADIUS * Math.cos(angle), y: 50 + RADIUS * Math.sin(angle) };

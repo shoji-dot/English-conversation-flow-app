@@ -31,12 +31,12 @@ export function FlowNode({ href, icon: Icon, label, labelJa, x, y, order, emphas
         <motion.div
           whileTap={{ scale: 0.92 }}
           className={
-            "flex h-20 w-20 flex-col items-center justify-center gap-1 rounded-full shadow-card " +
+            "flex h-16 w-16 flex-col items-center justify-center gap-1 rounded-full shadow-card " +
             (emphasized ? "bg-accent text-white" : "bg-surface text-ink")
           }
         >
-          <Icon size={22} strokeWidth={1.75} />
-          <span className="text-[11px] font-medium leading-none">{label}</span>
+          <Icon size={20} strokeWidth={1.75} />
+          <span className="text-[10px] font-medium leading-none">{label}</span>
         </motion.div>
       </Link>
     </motion.div>

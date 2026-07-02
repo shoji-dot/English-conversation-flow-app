@@ -23,7 +23,11 @@ export function useHistory() {
   const record = useCallback((id: string) => {
     setHistory((prev) => {
       const next = [id, ...prev.filter((p) => p !== id)].slice(0, MAX_HISTORY);
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // 容量超過・プライベートモード等での書き込み失敗は無視し、表示状態(state)のみ更新を継続する
+      }
       return next;
     });
   }, []);
