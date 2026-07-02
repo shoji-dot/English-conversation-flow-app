@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { Star, Clock, Search, BarChart2 } from "lucide-react";
+import { Star, Clock, Search, BarChart2, LayoutGrid } from "lucide-react";
 import { ConversationFlowMap } from "@/components/flow/ConversationFlowMap";
 
 const quickLinks = [
+  { href: "/scene", label: "Scenes", icon: LayoutGrid },
   { href: "/search", label: "Search", icon: Search },
   { href: "/favorites", label: "Favorites", icon: Star },
   { href: "/history", label: "History", icon: Clock },

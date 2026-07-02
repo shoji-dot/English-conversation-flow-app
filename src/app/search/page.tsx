@@ -4,9 +4,11 @@ import { useMemo, useState } from "react";
 import { Search as SearchIcon } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { PhraseList } from "@/components/phrase/PhraseList";
+import { ScenePhraseList } from "@/components/scene/ScenePhraseList";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { searchPhrases } from "@/data/phrases";
+import { searchScenePhrases } from "@/data/scenePhrases";
 import { industries } from "@/data/industries";
 import type { IndustryTag } from "@/types/phrase";
 
@@ -14,7 +16,11 @@ export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [activeTags, setActiveTags] = useState<IndustryTag[]>([]);
 
-  const results = useMemo(
+  const sceneResults = useMemo(
+    () => searchScenePhrases(query, activeTags),
+    [query, activeTags]
+  );
+  const legacyResults = useMemo(
     () => searchPhrases(query, activeTags),
     [query, activeTags]
   );
@@ -69,8 +75,13 @@ export default function SearchPage() {
         <p className="pt-10 text-center text-sm text-ink-muted">
           キーワードまたはタグで絞り込み
         </p>
+      ) : sceneResults.length === 0 && legacyResults.length === 0 ? (
+        <p className="pt-10 text-center text-sm text-ink-muted">見つかりませんでした</p>
       ) : (
-        <PhraseList phrases={results} emptyMessage="見つかりませんでした" />
+        <div className="flex flex-col gap-6">
+          {sceneResults.length > 0 && <ScenePhraseList phrases={sceneResults} />}
+          {legacyResults.length > 0 && <PhraseList phrases={legacyResults} />}
+        </div>
       )}
     </main>
   );
