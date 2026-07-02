@@ -1,0 +1,14 @@
+{
+  "name": "Talk Flow — 会話思考支援ツール",
+  "short_name": "Talk Flow",
+  "description": "会話中に0.5〜2秒で次の一言を選べる思考支援ツール",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
