@@ -42,7 +42,7 @@ export function FlowNode({ href, icon: Icon, label, labelJa, x, y, order, emphas
             }
           >
             <Icon size={20} strokeWidth={1.75} />
-            <span className="text-[10px] font-medium leading-none">{label}</span>
+            <span className="px-1 text-center text-[9px] font-medium leading-tight">{label}</span>
           </motion.div>
         </Link>
       </motion.div>
